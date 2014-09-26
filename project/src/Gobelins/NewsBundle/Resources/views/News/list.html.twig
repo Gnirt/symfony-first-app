@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block title parent()~' Index news' %}
+{% block page_title 'news index' %}
+
+{% block body %}
+	{% if app.session.flashBag.has('success') %}
+		<ul>
+			{% for message in app.session.flashBag.get('success') %}
+				<li>{{ message }}</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+
+	<div>
+		{% for aNews in news %}
+			<fieldset>
+				<legend>
+					<b>{{ aNews.title }}</b>
+				</legend>
+				<p>{{ aNews.content }}</p>
+				<div>Author : {{ aNews.author }} on {{ aNews.createdAt|date('Y-m-d H:i:s') }}</div>
+			</fieldset>
+		{% else %}
+			<b>No news found in database</b>
+		{% endfor %}
+	</div>
+{% endblock body %}
