@@ -1,0 +1,12 @@
+gobelins_user:
+    resource: "@GobelinsUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+gobelins_news:
+    resource: "@GobelinsNewsBundle/Controller/"
+    type:     annotation
+    prefix:   /news
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
