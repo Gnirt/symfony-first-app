@@ -10,7 +10,6 @@ namespace Gobelins\NewsBundle\Form;
 
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Test\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class NewsType extends AbstractType
@@ -36,6 +35,10 @@ class NewsType extends AbstractType
             ])
             ->add('content', 'textarea', [
                'label' => 'Contenu'
+            ])
+            ->add('author', 'entity', [
+                'class' => 'GobelinsUserBundle:User',
+                'property' => 'email',
             ]);
     }
 

@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% block title parent()~' Index category' %}
+	{% block page_title 'category index' %}
+
+		{% block body %}
+			{% if app.session.flashBag.has('success') %}
+				<ul>
+					{% for message in app.session.flashBag.get('success') %}
+						<li>{{ message }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+
+			<div>
+				<a href="/category/create">Create a new category</a>
+				{% for aCategory in category %}
+					<p>
+						<b>{{ aCategory.title }}</b>
+					</p>
+				{% else %}
+					<b>No category found in database</b>
+				{% endfor %}
+			</div>
+		{% endblock body %}

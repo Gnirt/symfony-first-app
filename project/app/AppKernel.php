@@ -22,6 +22,12 @@ class AppKernel extends Kernel
 
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new JMS\AopBundle\JMSAopBundle(),
+            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new Gobelins\ApiBundle\GobelinsApiBundle(),
+            new Gobelins\BookBundle\GobelinsBookBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

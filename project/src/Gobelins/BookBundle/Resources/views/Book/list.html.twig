@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block title parent()~' Index book' %}
+{% block page_title 'book index' %}
+
+{% block body %}
+	{% if app.session.flashBag.has('success') %}
+		<ul>
+			{% for message in app.session.flashBag.get('success') %}
+				<li>{{ message }}</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+
+	<div>
+		<a href='/book/create'>Create a new book</a>
+		{% for aBook in book %}
+			<fieldset>
+				<legend>
+					<b>{{ aBook.title }}</b>
+				</legend>
+				<p>Description : {{ aBook.description }}</p>
+				<p>Category : {{ aBook.category.title }}</p>
+				<p>Publication : {{ aBook.publication|date('Y-m-d H:i:s') }}</p>
+				<p>Price : {{ aBook.price }}</p>
+				<p><a href='/book/edit/{{ aBook.id }}'>Edit</a> <a href='/book/delete/{{ aBook.id }}'>Delete</a></p>
+				<div>Author : {{ aBook.author }} on {{ aBook.createdAt|date('Y-m-d H:i:s') }}</div>
+			</fieldset>
+		{% else %}
+			<b>No book found in database</b>
+		{% endfor %}
+	</div>
+{% endblock body %}

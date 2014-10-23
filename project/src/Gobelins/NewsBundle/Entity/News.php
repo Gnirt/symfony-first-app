@@ -10,12 +10,15 @@ namespace Gobelins\NewsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Behavior;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 /**
  * Class News
  * @package Gobelins\NewsBundle\Entity
  * @ORM\Entity
  * @ORM\Table(name="news")
+ * @ExclusionPolicy("all")
  */
 class News
 {
@@ -40,20 +43,24 @@ class News
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose()
      */
     private $id;
     /**
      * @ORM\Column(type="string", length=255)
+     * @Expose()
      */
     private $title;
     /**
      * @ORM\Column(type="text")
+     * @Expose()
      */
     private $content;
 
     /**
      * @Behavior\Timestampable(on="create")
      * @ORM\Column(name="created_at", type="datetime")
+     * @Expose()
      */
     private $createdAt;
 
@@ -66,6 +73,7 @@ class News
     /**
      * @ORM\ManyToOne(targetEntity="Gobelins\UserBundle\Entity\User", inversedBy="News")
      * @ORM\JoinColumn(name="author", referencedColumnName="id", nullable=false)
+     * @Expose()
      */
     private $author;
 

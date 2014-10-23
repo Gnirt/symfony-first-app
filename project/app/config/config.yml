@@ -78,3 +78,15 @@ fos_user:
     db_driver: orm
     firewall_name: secured_area
     user_class: Gobelins\UserBundle\Entity\User
+
+fos_rest:
+    routing_loader:
+      default_format: json
+
+jms_serializer:
+    metadata:
+        auto_detection: true
+        directories:
+            FOSUserBundle:
+                namespace_prefix: "FOS\\UserBundle"
+                path: "@GobelinsUserBundle/Resources/config/serializer/FOSUserBundle"

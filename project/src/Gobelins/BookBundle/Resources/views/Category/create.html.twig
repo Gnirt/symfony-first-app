@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% block page_title 'create category page' %}
+
+	{%  block body %}
+		{% if app.session.flashBag.has('error') %}
+			<ul>
+				{% for message in app.session.flashBag.get('error') %}
+					<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+		<form method='POST'>
+			{#{{ form_widget(form) }}#}
+
+			<div>
+				{{ form_label(form.title) }}
+				{{ form_widget(form.title, {'attr': {'class': 'form-control input-text', 'placeholder': 'YATAAAAA'}}) }}
+				{{ form_errors(form.title) }}
+			</div>
+
+			{{ form_rest(form) }}
+			<input type="submit" />
+		</form>
+	{% endblock body %}

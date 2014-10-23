@@ -1,0 +1,14 @@
+<form method='POST'>
+	{#{{ form_widget(form) }}#}
+
+	<div>
+		{{ form_label(form.title) }}
+		{{ form_widget(form.title, {'attr': {'class': 'form-control input-text', 'placeholder': 'YATAAAAA'}}) }}
+		{{ form_errors(form.title) }}
+	</div>
+
+	{{ form_row(form.content) }}
+
+	{{ form_rest(form) }}
+	<input type="submit" />
+</form>
